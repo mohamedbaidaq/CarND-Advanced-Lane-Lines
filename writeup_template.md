@@ -309,9 +309,16 @@ Here's a [link to my video result](./project_video_output.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-My pipeline works very well with the project_video.mp4 but with the challenge_video.mp4, it didn't work quite well due to the unclear lanes on the video frames, and also due to moving the vehicle through a darked tunnel. 
+**any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?**
+1. My pipeline works very well with the project_video.mp4 but with the challenge_video.mp4, it didn't work quite well due to the unclear lanes on the video frames, and also due to moving the vehicle through a darked tunnel. 
 
-**Conclusion**
-1. Tuning the computer vision parameters is tricky. It needs some experience to get the best value. So It would be much easier to get the tuning parameters by implementing an openCV tuner GUI that shows the effect of selecting different parameters on the output image.
+<img src="examples/challenge_example.png" width="480" alt="challenge_example" />
+
+2. Tuning the computer vision parameters is tricky. It needs some experience to get the best value. So It would be much easier to get the tuning parameters by implementing an openCV tuner GUI that shows the effect of selecting different parameters on the output image like that one 
+ 
+https://medium.com/@maunesh/finding-the-right-parameters-for-your-computer-vision-algorithm-d55643b6f954
+
+**What could you do to make it more robust ?**
+1. Use a a tuner as mentioned above in the problems to get the best thresholds parameters that can deal with shades, discontinued lanes, .. etc
 
 2. Using deep learning for computer vision is a great breakthrough, and the resulting pipeline would be much improved if some neural network is used which I am really looking forward to use in the upcoming lessons. 
