@@ -1,7 +1,3 @@
-## Writeup Template
-
----
-
 **Advanced Lane Finding Project**
 
 The goals / steps of this project are the following:
@@ -36,14 +32,15 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
-![image-3.png](attachment:image-3.png)
+<img src="examples/example1.png" width="480" alt="Calibration_Undistorted" />
 
 ### Pipeline (single images)
 
 #### 1. Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![image-2.png](attachment:image-2.png)
+
+<img src="examples/example2.png" width="480" alt="Test_Image_Undistorted" />
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
@@ -61,11 +58,12 @@ def apply_color_gradient_pipeline(image, s_thresh=(170, 255), sx_thresh=(20, 100
 ```
 Here's an example of my output for this step.
 
-![image-5.png](attachment:image-5.png)
+<img src="examples/example3.png" width="480" alt="Thresholded_Test_Image" />
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warp_image(image)`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warp_image(image)` function takes only as inputs an image (`image`).  I choose to hardcode the source and destination points in the following manner:
+The code for my perspective transform includes a function called `warp_image(image)`
+The `warp_image(image)` function takes only as inputs an image (`image`).  I choose to hardcode the source and destination points in the following manner:
 
 ```python
 src_pts = np.float32([[580.0, 460.0],[740.0, 460.0],[1100.0, 670.0],[270.0, 670.0]])
@@ -83,7 +81,7 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by drawing the `src_pts` and `dst_pts` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![image-7.png](attachment:image-7.png)
+<img src="examples/example4.png" width="480" alt="Warped_Test_Image" />
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
@@ -219,9 +217,9 @@ def fit_polynomial_real(binary_warped, ym_per_pix, xm_per_pix):
             
     return lefty, righty, left_fit_cr, right_fit_cr
 ```
-![image-10.png](attachment:image-10.png)
+<img src="examples/example5.png" width="480" alt="Fitted_Test_Image" />
 
-![image-9.png](attachment:image-9.png)
+<img src="examples/example6.png" width="480" alt="Fitted_Test_Image_2" />
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
@@ -295,7 +293,7 @@ def generate_warped_with_lanes(undist_image, warped_binary_image, Minv, left_fit
 ```
 Here is an example of my result on a test image:
 
-![image-12.png](attachment:image-12.png)
+<img src="examples/example7.png" width="480" alt="Warped_Back_Test_Image" />
 
 ---
 
@@ -315,6 +313,5 @@ My pipeline works very well with the project_video.mp4 but with the challenge_vi
 
 **Conclusion**
 1. Tuning the computer vision parameters is tricky. It needs some experience to get the best value. So It would be much easier to get the tuning parameters by implementing an openCV tuner GUI that shows the effect of selecting different parameters on the output image.
-
 
 2. Using deep learning for computer vision is a great breakthrough, and the resulting pipeline would be much improved if some neural network is used which I am really looking forward to use in the upcoming lessons. 
